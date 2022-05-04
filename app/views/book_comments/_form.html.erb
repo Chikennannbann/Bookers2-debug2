@@ -1,0 +1,19 @@
+<% book.book_comments.each do |f| %>
+<tr>
+  <td>
+    写真<br>
+    <%= f.user.name %>
+  </td>
+  <td><%= f.comment %></td>
+  <td>
+    <% if f.user == current_user %>
+    <%= link_to 'Destroy', book_book_comments_path(f.book,f), method: :delete %>
+    <% end %>
+  </td>
+</tr>
+<% end %>
+
+<%= form_with model: [@book, @book_comment] do |f| %>
+  <%= f.text_area :comment, rows: '5' %>
+  <%= f.submit "送信" %>
+<% end %>
