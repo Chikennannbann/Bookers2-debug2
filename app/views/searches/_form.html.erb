@@ -1,3 +1,4 @@
+<div class="mt-2">
 <% if user_signed_in? %>
     <%= form_with url: search_path, local:true, method: :get do |f| %>
       <%= f.text_field :word %>
@@ -6,3 +7,4 @@
       <%= f.submit "検索" %>
     <% end %>
 <% end %>
+</div>

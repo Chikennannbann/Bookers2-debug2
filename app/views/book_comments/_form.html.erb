@@ -1,25 +1,5 @@
-<% book.book_comments.each do |f| %>
-<table>
- <tbody>
- <tr>
-  <td>
-    <%= link_to user_path(f.user) do %>
-    <%= image_tag f.user.get_profile_image, size:"50x50" %><br>
-    <%= f.user.name %>
-    <% end %>
-  </td>
-  <td><%= f.comment %></td>
-  <td>
-    <% if f.user == current_user %>
-    <%= link_to 'Destroy', book_book_comment_path(f.book,f), class: "btn btn-sm btn-danger", method: :delete %>
-    <% end %>
-  </td>
- </tr>
- </tbody>
-</table>
-<% end %>
 
-<%= form_with model: [book, book_comment] do |f| %>
-  <%= f.text_area :comment, rows: '5' %><br>
+<%= form_with model: [book, book_comment], local: false do |f| %>
+  <%= f.text_area :comment, rows: '5', class: "w-100 comment-textarea" %>
   <%= f.submit "送信" %>
 <% end %>
