@@ -1,1 +1,2 @@
-$(".favorite-btn").html("<%= j(render 'favorites/btn', book: @favorite.book) %>");
+$(".favorite-<%= @favorite.book_id %>").html("<%= j(render 'favorites/btn', book: @favorite.book) %>");
+<!--クラスに記述したものから得たidを文字列に限定していいね作成-->
