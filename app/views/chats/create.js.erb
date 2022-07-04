@@ -1,2 +1,5 @@
 $('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
+<!--入力されたメッセージの内容を親要素messageの末尾に追加する、という意味-->
 $('input[type=text]').val("")
+$('.errors').empty();
+<!--エラー表示後、正しく入力された際にエラー文を出さない為-->
