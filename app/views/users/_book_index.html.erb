@@ -1,0 +1,52 @@
+<div>
+  <% if current_user.id == @user.id %>
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>今日の投稿数</th>
+          <th>前日の投稿数</th>
+          <th>前日比</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @today_book.count %></td>
+          <td><%= @yesterday_book.count %></td>
+          <td>
+            <% if @yesterday_book.count == 0 %>
+              前日の投稿が0のため計算できません
+            <% else %>
+              <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
+              <%= (@the_day_before * 100).round %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>今週の投稿数</th>
+          <th>前週の投稿数</th>
+          <th>前週比</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @this_week_book.count %></td>
+          <td><%= @last_week_book.count %></td>
+          <td>
+            <% if @last_week_book.count == 0 %>
+              前週の投稿が0のため計算できません
+            <% else %>
+              <% @the_week_before = @this_week_book.count / @last_week_book.count.to_f %>
+              <!--to_fは浮動小数点数として変換（小数点を含む形、文字列など判定できないものは0.0となる）-->
+              <%= (@the_week_before * 100).round %>
+              <!--roundは小数点以下を四捨五入.round(1)で0.1が表示可能-->
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>
