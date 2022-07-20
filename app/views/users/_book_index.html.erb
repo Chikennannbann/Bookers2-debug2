@@ -1,5 +1,6 @@
 <div>
   <% if current_user.id == @user.id %>
+    <h3>投稿数の前日比・前週比</h3>
     <table class='table table-bordered'>
       <thead>
         <tr>
@@ -45,6 +46,31 @@
               <!--roundは小数点以下を四捨五入.round(1)で0.1が表示可能-->
             <% end %>
           </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>7日分の投稿数</h3>
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>6日前</th>
+          <th>5日前</th>
+          <th>4日前</th>
+          <th>3日前</th>
+          <th>2日前</th>
+          <th>1日前</th>
+          <th>今日</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @books.created_6day_ago.count %></td>
+          <td><%= @books.created_5day_ago.count %></td>
+          <td><%= @books.created_4day_ago.count %></td>
+          <td><%= @books.created_3day_ago.count %></td>
+          <td><%= @books.created_2day_ago.count %></td>
+          <td><%= @books.created_yesterday.count %></td>
+          <td><%= @books.created_today.count %></td>
         </tr>
       </tbody>
     </table>
