@@ -1,4 +1,4 @@
-$('.daily_posts_table').html('
+$('.daily_posts_table').html(`
   <h2>検索結果</h2>
   <div class='card'>
     <div class='card-header'>投稿数</div>
@@ -6,4 +6,5 @@ $('.daily_posts_table').html('
       <%= j(@books.count) %>
     </div>
   </div>
-')
+`);
+<!--バッククォートが使用されている-->
